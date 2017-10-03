@@ -27,30 +27,43 @@ If this returns a version number, NodeJS is installed. **If not**, get NodeJS <a
 $ `git clone https://github.com/NLDev/GitHub-Commit-Streak.git && cd RNN.js` <br>
 If not, download it <a href="https://github.com/NLDev/GitHub-Commit-Streak/archive/master.zip">here</a> and extract the ZIP file.<br>
 Then navigate to the folder.<br><br>
-3. Make a new repository on GitHub or navigate to an existing one (depending on where you want your update file)<br><br>
-4. Create a new file and call it whatever you want. For example "`streak.txt`" <br><br>
-5. Enter nothing but a `1` in it. <br><br>
-6. Configure it in your favourite editor by editing [config.json](https://github.com/NLDev/GitHub-Commit-Streak/blob/master/config.json)<br>
+3. Install all dependencies by typing <br>
+$ `npm install`<br><br>
+4. Make a new repository on GitHub or navigate to an existing one (depending on where you want your update file)<br><br>
+5. Create a new file and call it whatever you want. For example "`streak.txt`" <br><br>
+6. Enter nothing but a `1` in it. <br><br>
+7. Configure it in your favourite editor by editing [config.json](https://github.com/NLDev/GitHub-Commit-Streak/blob/master/config.json)<br>
 
 | Keyword | Meaning |
 |---------|---------|
 | username | Your GitHub username |
 | password | Your github password (you get the point) |
+| is_base64 | Either true or false; If the password you specified is encoded in Base64 or not | 
 | repository | The repository which contains the file you want to update |
 | streakfile | The file in the repository which will get updated |
+| time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM |
 
 Example `config.json`:
 ```JSON
 {
 	"auth":{
 		"username": "NLDev",
-		"password": "WontTellYa"
+		"password": "WontTellYa",
+		"is_base64": false
 	},
 	"file":{
 		"repository": "dotfiles",
 		"streakfile": "streak.txt"
+	},
+	"cron": {
+		"time": 20
 	}
 }
 ```
 
-7. Install foreverjs
+8. Install [ForeverJS](https://github.com/foreverjs/forever) by typing <br>
+$ `sudo npm install forever -g` <br><br>
+9. Launch the script by typing <br>
+$ `forever start app.js`
+
+That's it! :smile_cat:
