@@ -13,10 +13,20 @@ require.extensions['.json'] = function (module, filename) { module.exports = fs.
 var jsondata = require('./config.json');
 var raw      = JSON.parse(jsondata);
 
-var time = raw.cron.time;
+var time = (raw.cron.time == 24) ? 0 : raw.cron.time;
 var TZ   = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 var crontime = "0 " + time + " * * *";
+
+var hrs = new Date().getHours(),
+	min = new Date().getMinutes();
+
+console.log();
+log("Started!\n");
+log("Cronjob: " + crontime);
+log("Current time: " + hrs + ":" + min + " (" + toFormat(hrs, min) + ")")
+log("Executing at: " + time + ":00 (" + toFormat(time, 0) + ")");
+log("Timezone: " + TZ);
 
 new cron(crontime, function() {
 	var user = raw.auth.username,
@@ -59,12 +69,14 @@ new cron(crontime, function() {
 			sha: sha
 		}
 
-		r.contents(file).add(config).then((info) => {
-			log("Day " + day + ": New SHA is " + info.commit.sha);
-			process.exit(0);
-		});
+		r.contents(file).add(config).then((info) => { log("Day " + day + ": New SHA is " + info.commit.sha); });
 	}
 }, null, true, TZ);
+
+function toFormat(hrs, mins){
+	mins = (mins == 0) ? "00" : (mins >= 10) ? mins : "0" + mins;
+	return (hrs > 12) ? (hrs - 12 + ":" + mins + " PM") : (hrs + ":" + mins + " AM"); 
+}
 
 function log(text){ console.log(getTS() + "\xa0" + text); }
 
