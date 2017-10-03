@@ -1,7 +1,8 @@
 {
 	"auth": {
 		"username": "-- YOUR GITHUB USERNAME --",
-		"password": "-- YOUR GITHUB PASSWORD --"
+		"password": "-- YOUR GITHUB PASSWORD --",
+		"is_base64": false
 	},
 	"file": {
 		"repository": "-- REPOSITORY NAME --",
