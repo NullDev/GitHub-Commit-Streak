@@ -24,7 +24,7 @@ I don't know
 $ `node -v` <br>
 If this returns a version number, NodeJS is installed. **If not**, get NodeJS <a href="https://nodejs.org/en/download/package-manager/">here</a>. <br><br>
 2. Clone the repository and navigate to it. If you have Git installed, type <br>
-$ `git clone https://github.com/NLDev/GitHub-Commit-Streak.git && cd RNN.js` <br>
+$ `git clone https://github.com/NLDev/GitHub-Commit-Streak.git && cd GitHub-Commit-Streak` <br>
 If not, download it <a href="https://github.com/NLDev/GitHub-Commit-Streak/archive/master.zip">here</a> and extract the ZIP file.<br>
 Then navigate to the folder.<br><br>
 3. Install all dependencies by typing <br>
