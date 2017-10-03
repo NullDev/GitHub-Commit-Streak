@@ -49,9 +49,14 @@ new cron(crontime, function() {
 	var r = git.repos(user, repo);
 
 	r.contents(file).fetch().then((i) => {
+		var b   = null, 
+			fin = null;
 		var s = i.content;
-		var b = Buffer.from(s, 'base64');
-		var fin = b.toString();
+		if (!isset(s) || isNaN(s) || s <= 0) fin = 0;
+		else {
+			b = Buffer.from(s, 'base64');
+			fin = b.toString();
+		}
 		var sha = i.sha;
 		doCommit(fin, sha);
 	});
@@ -77,6 +82,8 @@ function toFormat(hrs, mins){
 	mins = (mins == 0) ? "00" : (mins >= 10) ? mins : "0" + mins;
 	return (hrs > 12) ? (hrs - 12 + ":" + mins + " PM") : (hrs + ":" + mins + " AM"); 
 }
+
+function isset(_var) { return (_var && _var != null && _var != "") ? true : false; }
 
 function log(text){ console.log(getTS() + "\xa0" + text); }
 
