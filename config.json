@@ -1,10 +1,13 @@
 {
-	"auth":{
+	"auth": {
 		"username": "-- YOUR GITHUB USERNAME --",
 		"password": "-- YOUR GITHUB PASSWORD --"
 	},
-	"file":{
+	"file": {
 		"repository": "-- REPOSITORY NAME --",
 		"streakfile": "-- GIT COMMIT FILE --"
+	},
+	"cron": {
+		"time": 20
 	}
 }
