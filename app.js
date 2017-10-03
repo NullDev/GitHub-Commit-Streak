@@ -20,10 +20,16 @@ var crontime = "0 " + time + " * * *";
 
 new cron(crontime, function() {
 	var user = raw.auth.username,
-		pass = raw.auth.password;
+		pass = raw.auth.password,
+		base = raw.auth.is_base64;
 
 	var repo = raw.file.repository,
 		file = raw.file.streakfile;
+
+	if (base){
+		var buf = new Buffer(pass.toString());
+		pass = buf.toString('base64');
+	}
 
 	var git = new github({
 		username: user,
@@ -54,8 +60,23 @@ new cron(crontime, function() {
 		}
 
 		r.contents(file).add(config).then((info) => {
-			console.log("Day " + day + ": New SHA is " + info.commit.sha);
+			log("Day " + day + ": New SHA is " + info.commit.sha);
 			process.exit(0);
 		});
 	}
 }, null, true, TZ);
+
+function log(text){ console.log(getTS() + "\xa0" + text); }
+
+function getTS() {
+	var date = new Date();
+	var hour = date.getHours(),
+		min  = date.getMinutes(),
+		sec  = date.getSeconds();
+
+	hour  = (hour < 10 ? "0" : "") + hour;
+	min   = (min  < 10 ? "0" : "") + min;
+	sec   = (sec  < 10 ? "0" : "") + sec;
+
+	return "[" + hour + "h:" + min + "m:" + sec + "s]";
+}
