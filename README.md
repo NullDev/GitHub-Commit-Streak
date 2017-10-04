@@ -31,7 +31,7 @@ Then navigate to the folder.<br><br>
 $ `npm install`<br><br>
 4. Make a new repository on GitHub or navigate to an existing one (depending on where you want your update file)<br><br>
 5. Create a new file and call it whatever you want. For example "`streak.txt`" <br><br>
-6. Enter nothing but a `1` in it. <br><br>
+6. Enter nothing but a `1` in it. Note if you write anything other than a (positive) number, the script will start to count from 1 again.<br><br>
 7. Configure it in your favourite editor by editing [config.json](https://github.com/NLDev/GitHub-Commit-Streak/blob/master/config.json)<br>
 
 | Keyword | Meaning |
