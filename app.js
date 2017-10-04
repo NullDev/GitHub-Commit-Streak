@@ -36,7 +36,11 @@ log("Executing at: " + time + ":00 (" + toFormat(time, 0) + ")");
 log("Timezone: " + TZ);
 log.nl();
 
-new cron(crontime, function() {
+var args = process.argv;
+args = args.map(v => v.toLowerCase());
+if (args.indexOf("-c") > -1 || args.indexOf("--commit") > -1) performCron();
+
+function performCron(){
 	var user = raw.auth.username,
 		pass = raw.auth.password,
 		base = raw.auth.is_base64;
@@ -84,14 +88,14 @@ new cron(crontime, function() {
 
 		r.contents(file).add(config).then((info) => { log("Day " + day + ": New SHA is " + info.commit.sha); });
 	}
-}, null, true, TZ);
+}
+
+new cron(crontime, function() { performCron(); }, null, true, TZ);
 
 function toFormat(hrs, mins){
 	mins = (mins == 0) ? "00" : (mins >= 10) ? mins : "0" + mins;
 	return (hrs > 12) ? (hrs - 12 + ":" + mins + " PM") : (hrs + ":" + mins + " AM"); 
 }
-
-function nl(){ console.log("\xa0"); }
 
 function isset(_var) { return (_var && _var != null && _var != "") ? true : false; }
 
