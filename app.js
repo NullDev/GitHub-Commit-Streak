@@ -26,8 +26,7 @@ var hrs = new Date().getHours(),
 var args = process.argv;
 args = args.map(v => v.toLowerCase());
 
-if (args.indexOf("-m") > -1 || args.indexOf("--mute")   > -1) mutelog = true;
-if (args.indexOf("-c") > -1 || args.indexOf("--commit") > -1) performCron(); 
+if (args.indexOf("-m") > -1 || args.indexOf("--mute") > -1) mutelog = true; 
 
 function log(text, init){
 	if (!mutelog) if (!init) console.log(getTS() + "\xa0" + text); 
@@ -44,6 +43,8 @@ log("Executing at: " + time + ":00 (" + toFormat(time, 0) + ")");
 log("Timezone: " + TZ);
 log.nl();
 
+if (args.indexOf("-c") > -1 || args.indexOf("--commit") > -1) performCron();
+
 function performCron(){
 	var user = raw.auth.username,
 		pass = raw.auth.password,
@@ -52,10 +53,7 @@ function performCron(){
 	var repo = raw.file.repository,
 		file = raw.file.streakfile;
 
-	if (base){
-		var buf = new Buffer(pass.toString());
-		pass = buf.toString('base64');
-	}
+	if (base) pass = atob(pass);
 
 	var git = new github({
 		username: user,
@@ -65,24 +63,21 @@ function performCron(){
 	var r = git.repos(user, repo);
 
 	r.contents(file).fetch().then((i) => {
-		var b   = null, 
-			fin = null;
 		var s = i.content;
-		if (!isset(s) || isNaN(s) || s <= 0) fin = 0;
-		else {
-			b = Buffer.from(s, 'base64');
-			fin = b.toString();
-		}
+
+		var fin = atob(s);
+
+		fin = parseInt(fin);
+		if (fin.toString().toLowerCase() == "nan") fin = 0;
+
 		var sha = i.sha;
 		doCommit(fin, sha);
 	});
 
 	function doCommit(str, sha){
-		str = parseInt(str);
 		var day = ++str;
 
-		var buf = new Buffer(day.toString());
-		var stk = buf.toString('base64');
+		var stk = btoa(day);
 
 		var config = {
 			message: 'Streak Day ' + day,
@@ -95,6 +90,15 @@ function performCron(){
 }
 
 new cron(crontime, function() { performCron(); }, null, true, TZ);
+
+function atob(str) { return new Buffer(str, 'base64').toString('binary'); }
+
+function btoa(str) {
+	var buffer;
+	if (str instanceof Buffer) buffer = str;
+	else buffer = new Buffer(str.toString(), 'binary');
+	return buffer.toString('base64');
+}
 
 function toFormat(hrs, mins){
 	mins = (mins == 0) ? "00" : (mins >= 10) ? mins : "0" + mins;
