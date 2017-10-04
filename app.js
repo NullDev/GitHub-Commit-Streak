@@ -21,12 +21,20 @@ var crontime = "0 " + time + " * * *";
 var hrs = new Date().getHours(),
 	min = new Date().getMinutes();
 
-console.log();
+function log(text, init){ 
+	if (!init) console.log(getTS() + "\xa0" + text); 
+	function nl(){ console.log("\xa0"); }
+	log.nl = nl;
+}
+log(null, true);
+
+log.nl();
 log("Started!\n");
 log("Cronjob: " + crontime);
 log("Current time: " + hrs + ":" + min + " (" + toFormat(hrs, min) + ")")
 log("Executing at: " + time + ":00 (" + toFormat(time, 0) + ")");
 log("Timezone: " + TZ);
+log.nl();
 
 new cron(crontime, function() {
 	var user = raw.auth.username,
@@ -83,9 +91,9 @@ function toFormat(hrs, mins){
 	return (hrs > 12) ? (hrs - 12 + ":" + mins + " PM") : (hrs + ":" + mins + " AM"); 
 }
 
-function isset(_var) { return (_var && _var != null && _var != "") ? true : false; }
+function nl(){ console.log("\xa0"); }
 
-function log(text){ console.log(getTS() + "\xa0" + text); }
+function isset(_var) { return (_var && _var != null && _var != "") ? true : false; }
 
 function getTS() {
 	var date = new Date();
