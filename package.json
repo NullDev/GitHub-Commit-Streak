@@ -14,11 +14,13 @@
 		"type": "git",
 		"url": "https://github.com/NLDev/GitHub-Commit-Streak"
 	},
-	"maintainers": [{
-		"name": "NullDev",
-		"email": "admin@nulldev.org",
-		"web": "nulldev.org"
-	}],
+	"maintainers": [
+		{
+			"name": "NullDev",
+			"email": "admin@nulldev.org",
+			"web": "nulldev.org"
+		}
+	],
 	"license": "MIT",
 	"author": "NullDev",
 	"homepage": "https://nulldev.org"
