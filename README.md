@@ -67,3 +67,12 @@ $ `sudo npm install forever -g` <br><br>
 $ `forever start app.js`
 
 That's it! :smile_cat:
+
+### Additional Command-Line arguments:
+
+| Argument | Explanation |
+|----------|-------------|
+| `-c` or `--commit` | Force a commit at script start |
+| `-m` or `--mute` | Do not display any logs and outputs |
+
+Happy hacking! :smile:
