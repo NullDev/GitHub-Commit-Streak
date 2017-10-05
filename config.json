@@ -10,5 +10,10 @@
 	},
 	"cron": {
 		"time": 20
+	},
+	"random": {
+		"random_enabled": false,
+		"random_min_hour": 7,
+		"random_max_hour": 18
 	}
 }
