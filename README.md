@@ -37,11 +37,11 @@ $ `npm install`<br><br>
 | Keyword | Meaning |
 |---------|---------|
 | username | Your GitHub username |
-| password | Your github password (you get the point) |
+| password | Your GitHub password |
 | is_base64 | Either true or false; If the password you specified is encoded in Base64 or not | 
 | repository | The repository which contains the file you want to update |
 | streakfile | The file in the repository which will get updated |
-| time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM |
+| time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM. For midnight both, `0` and `24` works. |
 
 Example `config.json`:
 ```JSON
