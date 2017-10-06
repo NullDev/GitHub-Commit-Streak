@@ -42,6 +42,8 @@ $ `npm install`<br><br>
 | repository | The repository which contains the file you want to update |
 | streakfile | The file in the repository which will get updated |
 | time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM. For midnight both, `0` and `24` works. |
+| commit_at_start | Same as the -c / --commit argument described [below](https://github.com/NLDev/GitHub-Commit-Streak#additional-command-line-arguments). Forces a commit before th cron's first execution |
+| random | Everything in the `random` categorie can be ignored for now. |
 
 Example `config.json`:
 ```JSON
@@ -56,7 +58,13 @@ Example `config.json`:
 		"streakfile": "streak.txt"
 	},
 	"cron": {
-		"time": 20
+		"time": 20,
+		"commit_at_start": false
+	},
+	"random": {
+		"random_enabled": false,
+		"random_min_hour": 7,
+		"random_max_hour": 18
 	}
 }
 ```
