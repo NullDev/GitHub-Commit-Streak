@@ -38,12 +38,12 @@ $ `npm install`<br><br>
 |---------|---------|
 | username | Your GitHub username |
 | password | Your GitHub password |
-| is_base64 | Either true or false; If the password you specified is encoded in Base64 or not | 
-| repository | The repository which contains the file you want to update |
-| streakfile | The file in the repository which will get updated |
+| is_base64 | Either true or false; If the password you specified is encoded in Base64 or not. | 
+| repository | The repository which contains the file you want to update. |
+| streakfile | The file in the repository which will get updated. |
 | time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM. For midnight both, `0` and `24` works. |
-| commit_at_start | Same as the -c / --commit argument described [below](https://github.com/NLDev/GitHub-Commit-Streak#additional-command-line-arguments). Forces a commit before th cron's first execution |
-| random | Everything in the `random` categorie can be ignored for now. |
+| commit_at_start | Same as the -c / --commit argument described [below](https://github.com/NLDev/GitHub-Commit-Streak#additional-command-line-arguments). Forces a commit before the cron's first execution. |
+| random | Everything in the `random` categorie can be ignored for now. Those features are yet to be implemented. |
 
 Example `config.json`:
 ```JSON
