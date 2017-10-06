@@ -9,7 +9,8 @@
 		"streakfile": "-- GIT COMMIT FILE --"
 	},
 	"cron": {
-		"time": 20
+		"time": 20,
+		"commit_at_start": false
 	},
 	"random": {
 		"random_enabled": false,
