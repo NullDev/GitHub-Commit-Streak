@@ -9,12 +9,12 @@ var fs     = require('fs');
 //----------------------------//
 ////////////////////////////////
 
-var mutelog = false; 
+var mutelog  = false,
+    initCron = false; 
 
 var timeDefault    = 20,
     timeMaxDefault = 18,
     timeMinDefault = 7;
-
 
 require.extensions['.json'] = function (module, filename) { module.exports = fs.readFileSync(filename, 'utf8'); };
 var jsondata = require('./config.json');
@@ -27,10 +27,13 @@ var randomTime = raw.random.random_enabled;
 var randomMin  = (raw.random.random_min_hour == 24) ? 0 : raw.random.random_min_hour;
 var randomMax  = (raw.random.random_max_hour == 24) ? 0 : raw.random.random_max_hour;
 
+initCron = raw.cron.commit_at_start;
+
 var args = process.argv;
 args = args.map(v => v.toLowerCase());
 
 if (args.indexOf("-m") > -1 || args.indexOf("--mute")   > -1) mutelog    = true; 
+if (args.indexOf("-c") > -1 || args.indexOf("--commit") > -1) initCron   = true;
 if (args.indexOf("-r") > -1 || args.indexOf("--random") > -1) randomTime = true;
 
 function log(text, init){
@@ -154,7 +157,7 @@ function getTS() {
 }
 
 function main(){
-    if (args.indexOf("-c") > -1 || args.indexOf("--commit") > -1) performCron();
+    if (initCron) performCron();
     randomTime ? randomCron() : staticCron();
 }
 
