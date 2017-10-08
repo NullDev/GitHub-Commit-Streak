@@ -84,3 +84,9 @@ That's it! :smile_cat:
 | `-m` or `--mute` | Do not display any logs and outputs |
 
 Happy hacking! :smile:
+
+Screenshot: 
+ 
+<p align="center"> 
+<img height="200" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/scr1.png" /><br> 
+</p>
