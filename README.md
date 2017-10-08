@@ -85,8 +85,10 @@ That's it! :smile_cat:
 
 Happy hacking! :smile:
 
+<hr>
+
 Screenshot: 
  
 <p align="center"> 
-<img height="200" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/scr1.png" /><br> 
+<img height="500" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/scr1.png" /><br> 
 </p>
