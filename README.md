@@ -1,4 +1,4 @@
-# GitHub Commit Streak
+# GitHub Commit Streak <img src="http://i.imgur.com/Cj4rMrS.gif" height="50" alt="Swimming Octocat" title="Commit Streak">
 
 <p align="center">
 <img height="150" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/git.png" /><br>
