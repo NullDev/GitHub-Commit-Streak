@@ -95,8 +95,8 @@ function staticCron() {
     var hrs = new Date().getHours(),
         min = new Date().getMinutes();
 
-    hrs = (hrs < 10 ? "0" : "") + hrs;
-    min = (min < 10 ? "0" : "") + min;
+    var hrsF = (hrs < 10 ? "0" : "") + hrs;
+    var minF = (min < 10 ? "0" : "") + min;
 
     var crontime = null;
 
@@ -107,7 +107,7 @@ function staticCron() {
     crontime = "0 " + time + " * * *";
     log("Cron Type: Static");
     log("Cronjob: " + crontime);
-    log("Current time: " + hrs + ":" + min + " (" + toFormat(hrs, min) + ")")
+    log("Current time: " + hrsF + ":" + minF + " (" + toFormat(hrs, min) + ")")
     log("Executing at: " + ((time < 10 ? "0" : "") + time) + ":00 (" + toFormat(time, 0) + ")");
     log("Timezone: " + TZ);
     log.nl();
@@ -142,7 +142,7 @@ function btoa(str) {
 
 function toFormat(hrs, mins){
     mins = (mins == 0) ? "00" : (mins >= 10) ? mins : "0" + mins;
-    return (hrs > 12) ? (hrs - 12 + ":" + mins + " PM") : (hrs + ":" + mins + " AM"); 
+    return (hrs > 12) ? ((((hrs - 12) < 10 ? "0" : "") + (hrs - 12))  + ":" + mins + " PM") : (((hrs < 10 ? "0" : "") + hrs) + ":" + mins + " AM"); 
 }
 
 function isset(_var) { return (_var && _var != null && _var != "") ? true : false; }
