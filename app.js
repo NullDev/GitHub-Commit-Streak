@@ -77,6 +77,7 @@ function performCron(){
 
     function doCommit(str, sha){
         var day = ++str;
+        day = (day < 10 ? "0" : "") + day;
 
         var stk = btoa(day);
 
@@ -94,6 +95,9 @@ function staticCron() {
     var hrs = new Date().getHours(),
         min = new Date().getMinutes();
 
+    hrs = (hrs < 10 ? "0" : "") + hrs;
+    min = (min < 10 ? "0" : "") + min;
+
     var crontime = null;
 
     if (isNaN(time)){
@@ -104,7 +108,7 @@ function staticCron() {
     log("Cron Type: Static");
     log("Cronjob: " + crontime);
     log("Current time: " + hrs + ":" + min + " (" + toFormat(hrs, min) + ")")
-    log("Executing at: " + time + ":00 (" + toFormat(time, 0) + ")");
+    log("Executing at: " + ((time < 10 ? "0" : "") + time) + ":00 (" + toFormat(time, 0) + ")");
     log("Timezone: " + TZ);
     log.nl();
     new cron(crontime, function() { performCron(); }, null, true, TZ); 
