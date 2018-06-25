@@ -1,35 +1,36 @@
 "use strict";
-var github = require('octokat');
-var cron   = require('cron').CronJob;
-var fs     = require('fs');
 
 ////////////////////////////////
 //----------------------------//
-// Copyright (c) 2017 NullDev //
+// Copyright (c) 2018 NullDev //
 //----------------------------//
 ////////////////////////////////
 
-var mutelog  = false,
+let github = require("octokat");
+let cron   = require("cron").CronJob;
+let fs     = require("fs");
+
+let mutelog  = false,
     initCron = false; 
 
-var timeDefault    = 20,
+let timeDefault    = 20,
     timeMaxDefault = 18,
     timeMinDefault = 7;
 
-require.extensions['.json'] = function (module, filename) { module.exports = fs.readFileSync(filename, 'utf8'); };
-var jsondata = require('./config.json');
-var raw      = JSON.parse(jsondata);
+require.extensions[".json"] = function (module, filename) { module.exports = fs.readFileSync(filename, "utf8"); };
+let jsondata = require("./config.json");
+let raw      = JSON.parse(jsondata);
 
-var time = (raw.cron.time == 24) ? 0 : raw.cron.time;
-var TZ   = Intl.DateTimeFormat().resolvedOptions().timeZone;
+let time = (raw.cron.time == 24) ? 0 : raw.cron.time;
+let TZ   = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-var randomTime = raw.random.random_enabled;
-var randomMin  = (raw.random.random_min_hour == 24) ? 0 : raw.random.random_min_hour;
-var randomMax  = (raw.random.random_max_hour == 24) ? 0 : raw.random.random_max_hour;
+let randomTime = raw.random.random_enabled;
+let randomMin  = (raw.random.random_min_hour == 24) ? 0 : raw.random.random_min_hour;
+let randomMax  = (raw.random.random_max_hour == 24) ? 0 : raw.random.random_max_hour;
 
 initCron = raw.cron.commit_at_start;
 
-var args = process.argv;
+let args = process.argv;
 args = args.map(v => v.toLowerCase());
 
 if (args.indexOf("-m") > -1 || args.indexOf("--mute")   > -1) mutelog    = true; 
@@ -47,42 +48,42 @@ log.nl();
 log("Started!\n");
 
 function performCron(){
-    var user = raw.auth.username,
+    let user = raw.auth.username,
         pass = raw.auth.password,
         base = raw.auth.is_base64;
 
-    var repo = raw.file.repository,
+    let repo = raw.file.repository,
         file = raw.file.streakfile;
 
     if (base) pass = atob(pass);
 
-    var git = new github({
+    let git = new github({
         username: user,
         password: pass
     });
 
-    var r = git.repos(user, repo);
+    let r = git.repos(user, repo);
 
     r.contents(file).fetch().then((i) => {
-        var s = i.content;
+        let s = i.content;
 
-        var fin = atob(s);
+        let fin = atob(s);
 
         fin = parseInt(fin);
         if (fin.toString().toLowerCase() == "nan") fin = 0;
 
-        var sha = i.sha;
+        let sha = i.sha;
         doCommit(fin, sha);
     });
 
     function doCommit(str, sha){
-        var day = ++str;
+        let day = ++str;
         day = (day < 10 ? "0" : "") + day;
 
-        var stk = btoa(day);
+        let stk = btoa(day);
 
-        var config = {
-            message: 'Streak Day ' + day,
+        let config = {
+            message: "Streak Day " + day,
             content: stk,
             sha: sha
         }
@@ -92,13 +93,13 @@ function performCron(){
 } 
 
 function staticCron() {
-    var hrs = new Date().getHours(),
+    let hrs = new Date().getHours(),
         min = new Date().getMinutes();
 
-    var hrsF = (hrs < 10 ? "0" : "") + hrs;
-    var minF = (min < 10 ? "0" : "") + min;
+    let hrsF = (hrs < 10 ? "0" : "") + hrs;
+    let minF = (min < 10 ? "0" : "") + min;
 
-    var crontime = null;
+    let crontime = null;
 
     if (isNaN(time)){
         time = timeDefault;
