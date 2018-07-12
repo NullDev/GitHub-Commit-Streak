@@ -32,7 +32,7 @@ $ `npm install`<br><br>
 4. Make a new repository on GitHub or navigate to an existing one (depending on where you want your update file)<br><br>
 5. Create a new file and call it whatever you want. For example "`streak.txt`" <br><br>
 6. Enter nothing but a `1` in it. Note if you write anything other than a (positive) number, the script will start to count from 1 again.<br><br>
-7. Copy `config.template.js` and paste it as `config.js`
+7. Copy `config.template.js` and paste it as `config.js` <br><br>
 8. Configure it in your favourite editor by editing `config.json`<br>
 
 | Keyword | Meaning |
@@ -51,14 +51,18 @@ $ `npm install`<br><br>
 Example `config.json`:
 ```JSON
 {
-	"auth":{
-		"username": "NLDev",
-		"password": "WontTellYa",
-		"is_base64": false
+	"auth": {
+		"username": "-- YOUR GITHUB USERNAME --",
+		"password": "-- YOUR GITHUB PASSWORD --",
+		"is_base64": false,
+		"oauth": {
+			"use_oauth": false,
+			"oauth_token": "-- YOUR OAUTH TOKEN --"
+		}
 	},
-	"file":{
-		"repository": "dotfiles",
-		"streakfile": "streak.txt"
+	"file": {
+		"repository": "-- REPOSITORY NAME --",
+		"streakfile": "-- GIT COMMIT FILE --"
 	},
 	"cron": {
 		"time": 20,
@@ -70,11 +74,12 @@ Example `config.json`:
 		"random_max_hour": 18
 	}
 }
+
 ```
 
-8. Install [ForeverJS](https://github.com/foreverjs/forever) by typing <br>
+9. Install [ForeverJS](https://github.com/foreverjs/forever) by typing <br>
 $ `sudo npm install forever -g` <br><br>
-9. Launch the script by typing <br>
+10. Launch the script by typing <br>
 $ `forever start app.js`
 
 That's it! :smile_cat:
