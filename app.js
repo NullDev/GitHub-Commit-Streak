@@ -63,12 +63,12 @@ function performCron(){
     let git;
 
     if (raw.auth.oauth.use_oauth) git = new github({
-        username: user,
-        password: pass
+        token: otok
     });
 
     else git = new github({
-        token: otok
+        username: user,
+        password: pass
     });
 
     let r = git.repos(user, repo);
