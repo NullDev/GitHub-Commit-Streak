@@ -2,7 +2,11 @@
 	"auth": {
 		"username": "-- YOUR GITHUB USERNAME --",
 		"password": "-- YOUR GITHUB PASSWORD --",
-		"is_base64": false
+		"is_base64": false,
+		"oauth": {
+			"use_oauth": true,
+			"oauth_token": ""
+		}
 	},
 	"file": {
 		"repository": "-- REPOSITORY NAME --",

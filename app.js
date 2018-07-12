@@ -55,11 +55,20 @@ function performCron(){
     let repo = raw.file.repository,
         file = raw.file.streakfile;
 
+    let oath = raw.auth.oauth.use_oauth,
+        otok = raw.auth.oauth.token;
+
     if (base) pass = atob(pass);
 
-    let git = new github({
+    let git;
+
+    if (raw.auth.oauth.use_oauth) git = new github({
         username: user,
         password: pass
+    });
+
+    else git = new github({
+        token: otok
     });
 
     let r = git.repos(user, repo);
