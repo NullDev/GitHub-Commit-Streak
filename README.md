@@ -32,13 +32,16 @@ $ `npm install`<br><br>
 4. Make a new repository on GitHub or navigate to an existing one (depending on where you want your update file)<br><br>
 5. Create a new file and call it whatever you want. For example "`streak.txt`" <br><br>
 6. Enter nothing but a `1` in it. Note if you write anything other than a (positive) number, the script will start to count from 1 again.<br><br>
-7. Configure it in your favourite editor by editing [config.json](https://github.com/NLDev/GitHub-Commit-Streak/blob/master/config.json)<br>
+7. Copy `config.template.js` and paste it as `config.js`
+8. Configure it in your favourite editor by editing `config.json`<br>
 
 | Keyword | Meaning |
 |---------|---------|
 | username | Your GitHub username |
 | password | Your GitHub password |
 | is_base64 | Either true or false; If the password you specified is encoded in Base64 or not. | 
+| use_oauth | Whether to use an OAuth token rather than username & password. See [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). Use this if you have Two-Facto Authentification enabled! |
+| oauth_token | If the "use_oauth" option is set to true, this token will be used instead of username/password |
 | repository | The repository which contains the file you want to update. |
 | streakfile | The file in the repository which will get updated. |
 | time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM. For midnight both, `0` and `24` works. |
