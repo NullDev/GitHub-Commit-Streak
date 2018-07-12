@@ -56,7 +56,7 @@ function performCron(){
         file = raw.file.streakfile;
 
     let oath = raw.auth.oauth.use_oauth,
-        otok = raw.auth.oauth.token;
+        otok = raw.auth.oauth.oauth_token;
 
     if (base) pass = atob(pass);
 
