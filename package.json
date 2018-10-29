@@ -1,10 +1,10 @@
 {
-	"name": "GitHubStreak",
+	"name": "githubstreak",
 	"description": "GitHub Commit Streak bot",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"main": "app.js",
 	"scripts": {
-		"start": "node app.js"
+		"start": "node ./src/app.js"
 	},
 	"dependencies": {
 		"octokat": "^0.9.2",
