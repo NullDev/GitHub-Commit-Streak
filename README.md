@@ -1,7 +1,7 @@
 # GitHub Commit Streak <img src="http://i.imgur.com/Cj4rMrS.gif" height="50" alt="Swimming Octocat" title="Commit Streak">
 
 <p align="center">
-<img height="150" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/git.png" /><br>
+<img height="150" width="auto" src="https://raw.githubusercontent.com/NullDev/GitHub-Commit-Streak/master/.img/git.png" /><br>
 :octocat: Want a flawless GitHub commit history streak? <br>
 This script is for you!
 </p>
@@ -24,8 +24,8 @@ I don't know
 $ `node -v` <br>
 If this returns a version number, NodeJS is installed. **If not**, get NodeJS <a href="https://nodejs.org/en/download/package-manager/">here</a>. <br><br>
 2. Clone the repository and navigate to it. If you have Git installed, type <br>
-$ `git clone https://github.com/NLDev/GitHub-Commit-Streak.git && cd GitHub-Commit-Streak` <br>
-If not, download it <a href="https://github.com/NLDev/GitHub-Commit-Streak/archive/master.zip">here</a> and extract the ZIP file.<br>
+$ `git clone https://github.com/NullDev/GitHub-Commit-Streak.git && cd GitHub-Commit-Streak` <br>
+If not, download it <a href="https://github.com/NullDev/GitHub-Commit-Streak/archive/master.zip">here</a> and extract the ZIP file.<br>
 Then navigate to the folder.<br><br>
 3. Install all dependencies by typing <br>
 $ `npm install`<br><br>
@@ -45,7 +45,7 @@ $ `npm install`<br><br>
 | repository | The repository which contains the file you want to update. |
 | streakfile | The file in the repository which will get updated. |
 | time | This is the hour of the day (in 24 hour format) at which the commit will be made every day. In the example below 20 = 20:00 or 8:00PM. For midnight both, `0` and `24` works. |
-| commit_at_start | Same as the -c / --commit argument described [below](https://github.com/NLDev/GitHub-Commit-Streak#additional-command-line-arguments). Forces a commit before the cron's first execution. |
+| commit_at_start | Same as the -c / --commit argument described [below](https://github.com/NullDev/GitHub-Commit-Streak#additional-command-line-arguments). Forces a commit before the cron's first execution. |
 | random | Everything in the `random` categorie can be ignored for now. Those features are yet to be implemented. |
 
 Example `config.json`:
@@ -98,5 +98,5 @@ Happy hacking! :smile:
 Screenshot: 
  
 <p align="center"> 
-<img height="500" width="auto" src="https://raw.githubusercontent.com/NLDev/GitHub-Commit-Streak/master/.img/scr1.png" /><br> 
+<img height="500" width="auto" src="https://raw.githubusercontent.com/NullDev/GitHub-Commit-Streak/master/.img/scr1.png" /><br> 
 </p>
